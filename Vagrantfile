@@ -33,5 +33,8 @@ EOF
   mkdir -p /build
   ln -nsf /vagrant/build/conf /build/conf
   chown vagrant:vagrant /build /build/conf
+
+  growpart /dev/sda 3
+  lvextend -l 100%FREE -r /dev/ubuntu-vg/ubuntu-lv
   SHELL
 end
