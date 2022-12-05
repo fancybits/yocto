@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+vagrant up
+vagrant ssh -- 'cd /vagrant; source poky/oe-init-build-env /build; bitbake core-image-minimal'
