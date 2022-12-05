@@ -36,5 +36,16 @@ EOF
 
   growpart /dev/sda 3
   lvextend -l 100%FREE -r /dev/ubuntu-vg/ubuntu-lv
+
+  cat > /home/vagrant/.bash_aliases <<EOF
+alias g='git'
+alias gap='git add -p'
+alias gcm='git commit -m'
+stty werase undef
+bind '\\C-w:unix-filename-rubout'
+export EDITOR=vim
+EOF
+  chown vagrant:vagrant /home/vagrant/.bash_aliases
+  echo DONE
   SHELL
 end
