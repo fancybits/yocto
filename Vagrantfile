@@ -41,6 +41,7 @@ EOF
 alias g='git'
 alias gap='git add -p'
 alias gcm='git commit -m'
+alias t='git ls-files | grep'
 stty werase undef
 bind '\\C-w:unix-filename-rubout'
 export EDITOR=vim
