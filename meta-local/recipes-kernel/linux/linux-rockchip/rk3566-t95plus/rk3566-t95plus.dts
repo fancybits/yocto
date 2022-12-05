@@ -1,0 +1,29 @@
+#include "rk3566-box-demo-v10.dtsi";
+#include "rk3568-linux.dtsi";
+
+/ {
+    model = "Rockchip RK3566 BOX T95 PLUS Linux";
+    chosen {
+        bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyFIQ0";
+    };
+};
+
+&usb2phy1 {
+    status = "disabled";
+};
+
+&usb_host0_ehci {
+    status = "disabled";
+};
+
+&usb_host0_ohci {
+    status = "disabled";
+};
+
+&usb_host1_ehci {
+    status = "disabled";
+};
+
+&usb_host1_ohci {
+    status = "disabled";
+};
