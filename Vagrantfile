@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
 
   config.vm.provider "parallels" do |prl|
-    prl.cpus = 16
+    prl.cpus = 10
     prl.memory = 8192
     prl.linked_clone = false
     prl.customize ["set", :id, "--device-set", "hdd0", "--size", "120G", "--no-fs-resize"]
