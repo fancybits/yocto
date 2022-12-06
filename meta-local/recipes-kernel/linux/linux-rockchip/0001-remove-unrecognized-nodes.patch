@@ -1,0 +1,49 @@
+From 1ede5cf0ed8c7aaecb4ba1ac629258285a5e073f Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Tue, 6 Dec 2022 17:30:27 -0500
+Subject: [PATCH] remove unrecognized nodes
+
+---
+ .../arm64/boot/dts/rockchip/rk3568-linux.dtsi | 22 -------------------
+ 1 file changed, 22 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-linux.dtsi b/arch/arm64/boot/dts/rockchip/rk3568-linux.dtsi
+index 5623aa8dd15c..50a96e14422c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-linux.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568-linux.dtsi
+@@ -49,9 +49,6 @@
+ 		simple-audio-card,cpu {
+ 			sound-dai = <&i2s1_8ch>;
+ 		};
+-		simple-audio-card,codec {
+-			sound-dai = <&rk809_codec>;
+-		};
+ 	};
+ };
+ 
+@@ -71,25 +68,6 @@
+ 	};
+ };
+ 
+-&rk809_codec {
+-	#sound-dai-cells = <0>;
+-	compatible = "rockchip,rk809-codec", "rockchip,rk817-codec";
+-	clocks = <&cru I2S1_MCLKOUT>;
+-	clock-names = "mclk";
+-	assigned-clocks = <&cru I2S1_MCLKOUT>, <&cru I2S1_MCLK_TX_IOE>;
+-	assigned-clock-rates = <12288000>;
+-	assigned-clock-parents = <&cru I2S1_MCLKOUT_TX>, <&cru I2S1_MCLKOUT_TX>;
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&i2s1m0_mclk &hp_det>;
+-	hp-volume = <20>;
+-	spk-volume = <3>;
+-	status = "okay";
+-};
+-
+-&rk_headset {
+-	status = "disabled";
+-};
+-
+ &rng {
+ 	status = "okay";
+ };
