@@ -16,6 +16,14 @@
     vccio7-supply = <&vcc_3v3>;
 };
 
+&gmac1 {
+    /* Reset time is  20ms, 100ms for rtl8211f */
+    // snps,reset-delays-us = <0 20000 100000>;
+
+    /* Reset time is 100ms, 200ms for jl2101 */
+    snps,reset-delays-us = <0 100000 200000>;
+};
+
 &usb2phy1 {
     status = "disabled";
 };
