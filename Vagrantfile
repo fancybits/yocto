@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     prl.cpus = 10
     prl.memory = 8192
     prl.linked_clone = false
-    prl.customize ["set", :id, "--device-set", "hdd0", "--size", "120G", "--no-fs-resize"]
+    prl.customize ["set", :id, "--device-set", "hdd0", "--size", "250G", "--no-fs-resize"]
     prl.customize ["set", :id, "--sync-host-printers", "off"]
     prl.customize ["set", :id, "--device-set", "sound0", "--disable", "--disconnect"]
     prl.update_guest_tools = true
