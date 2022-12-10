@@ -13,3 +13,16 @@ index 7ff658739cf3..e284b2eb54ec 100644
  	ret = stmmac_reset(priv, priv->ioaddr);
  	if (ret) {
  		dev_err(priv->device, "Failed to reset the dma\n");
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+index 46633a665f7e..5d46f94e956f 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+@@ -1116,6 +1116,8 @@ static int dwmac_rk_init(struct net_device *dev,
+ 		goto init_error;
+ 	}
+ 
++	msleep(1500);
++
+ 	/* DMA initialization and SW reset */
+ 	ret = dwmac_rk_init_dma_engine(priv, lb_priv);
+ 	if (ret < 0) {
