@@ -8,4 +8,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
+SRC_URI += "file://stmmac_reset_delay.patch"
+SRC_URI += "file://dmcdebug.patch"
 SRC_URI += "file://jlsemiphy-fragment.cfg file://jlsemiphy.patch"
+#SRC_URI += "file://0001-jlsemi-sleep-hack.patch"
+#SRC_URI += "file://resethack.patch"
