@@ -1,0 +1,36 @@
+diff --git a/drivers/devfreq/rockchip_dmc.c b/drivers/devfreq/rockchip_dmc.c
+index d75c21e51854..758a93179c6a 100644
+--- a/drivers/devfreq/rockchip_dmc.c
++++ b/drivers/devfreq/rockchip_dmc.c
+@@ -1776,7 +1776,7 @@ static __maybe_unused int rk3568_dmc_init(struct platform_device *pdev,
+ 			   ROCKCHIP_SIP_CONFIG_DRAM_GET_VERSION);
+ 	dev_notice(&pdev->dev, "current ATF version 0x%lx\n", res.a1);
+ 	if (res.a0 || res.a1 < 0x101) {
+-		dev_err(&pdev->dev, "trusted firmware need update to V1.01 and above.\n");
++		dev_err(&pdev->dev, "trusted firmware need update to V1.01 and above (a0=0x%lx a1=0x%lx).\n", res.a0, res.a1);
+ 		return -ENXIO;
+ 	}
+ 
+diff --git a/drivers/devfreq/rockchip_dmc.c b/drivers/devfreq/rockchip_dmc.c
+index d75c21e51854..ab3efe46ea69 100644
+--- a/drivers/devfreq/rockchip_dmc.c
++++ b/drivers/devfreq/rockchip_dmc.c
+@@ -2839,6 +2839,7 @@ static int rockchip_dmcfreq_get_event(struct rockchip_dmcfreq *dmcfreq)
+ 
+ static int rockchip_dmcfreq_power_control(struct rockchip_dmcfreq *dmcfreq)
+ {
++	struct arm_smccc_res res;
+ 	struct device *dev = dmcfreq->dev;
+ 
+ 	dmcfreq->vdd_center = devm_regulator_get_optional(dev, "center");
+@@ -2847,6 +2848,10 @@ static int rockchip_dmcfreq_power_control(struct rockchip_dmcfreq *dmcfreq)
+ 		return PTR_ERR(dmcfreq->vdd_center);
+ 	}
+ 
++	res = sip_smc_dram(0, 0,
++			   ROCKCHIP_SIP_CONFIG_DRAM_GET_VERSION);
++	dev_notice(dev, "current ATF version 0x%lx (a0=0x%lx)!\n", res.a1, res.a0);
++
+ 	dmcfreq->dmc_clk = devm_clk_get(dev, "dmc_clk");
+ 	if (IS_ERR(dmcfreq->dmc_clk)) {
+ 		dev_err(dev, "Cannot get the clk dmc_clk. If using SCMI, trusted firmware need update to V1.01 and above.\n");
