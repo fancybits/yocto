@@ -4634,7 +4634,7 @@
 		// linux,initrd-start = <0x00 0xa200000>;
 		// bootargs_ext = "androidboot.boot_devices=fe310000.sdhci,fe330000.nandc";
 		// bootargs = "storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal  androidboot.dtb_idx=0 androidboot.dtbo_idx=0  androidboot.verifiedbootstate=orange androidboot.slot_suffix= androidboot.serialno=JZQF6FKPKW console=ttyFIQ0 androidboot.baseband=N/A androidboot.wificountrycode=CN androidboot.veritymode=enforcing androidboot.hardware=rk30board androidboot.console=ttyFIQ0 androidboot.verifiedbootstate=orange firmware_class.path=/vendor/etc/firmware init=/init rootwait ro loop.max_part=7 androidboot.selinux=permissive buildvariant=userdebug earlycon=uart8250,mmio32,0xfe660000 androidboot.boot_devices=fe310000.sdhci,fe330000.nandc";
-		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=tty0 console=ttyFIQ0 root=PARTUUID=614e0000-0000 rw rootwait";
+		bootargs = "earlycon=uart8250,mmio32,0xfe660000 console=ttyFIQ0 root=PARTUUID=614e0000-0000 rw rootwait loglevel=7";
 		phandle = <0x19e>;
 	};
 
