@@ -9,3 +9,4 @@
 [submodule "meta-rockchip"]
 	path = meta-rockchip
 	url = git@github.com:tmm1/meta-rockchip
+	branch = fancybits
