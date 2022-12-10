@@ -1,0 +1,36 @@
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 7ff658739cf3..f31af63c5d18 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -2195,11 +2195,13 @@ static int stmmac_init_dma_engine(struct stmmac_priv *priv)
+ 	if (priv->extend_desc && (priv->mode == STMMAC_RING_MODE))
+ 		atds = 1;
+ 
++	/*
+ 	ret = stmmac_reset(priv, priv->ioaddr);
+ 	if (ret) {
+ 		dev_err(priv->device, "Failed to reset the dma\n");
+ 		return ret;
+ 	}
++	*/
+ 
+ 	/* DMA Configuration */
+ 	stmmac_dma_init(priv, priv->ioaddr, priv->plat->dma_cfg, atds);
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+index 46633a665f7e..eca042900269 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+@@ -1012,11 +1012,13 @@ static int dwmac_rk_init_dma_engine(struct stmmac_priv *priv,
+ 	u32 chan = 0;
+ 	int ret = 0;
+ 
++	/*
+ 	ret = stmmac_reset(priv, priv->ioaddr);
+ 	if (ret) {
+ 		dev_err(priv->device, "Failed to reset the dma\n");
+ 		return ret;
+ 	}
++	*/
+ 
+ 	/* DMA Configuration */
+ 	stmmac_dma_init(priv, priv->ioaddr, priv->plat->dma_cfg, 0);
