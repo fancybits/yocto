@@ -27,7 +27,7 @@ EOF
 
   apt-get update
   apt-get install -y gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm python3-subunit mesa-common-dev zstd liblz4-tool
-  apt-get install -y git vim-nox
+  apt-get install -y git vim-nox usbutils
   apt-get install -y qemu-system-x86 qemu-user-binfmt libc6:amd64 zlib1g:amd64 libstdc++6:amd64 libusb-1.0-0:amd64
 
   mkdir -p /build
@@ -38,6 +38,7 @@ EOF
   lvextend -l 100%FREE -r /dev/ubuntu-vg/ubuntu-lv
 
   cat > /home/vagrant/.bash_aliases <<EOF
+alias v='vim'
 alias g='git'
 alias gap='git add -p'
 alias gcm='git commit -m'
