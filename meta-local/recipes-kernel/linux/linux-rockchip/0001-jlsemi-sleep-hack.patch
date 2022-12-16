@@ -8,7 +8,7 @@ index 7ff658739cf3..e284b2eb54ec 100644
  
 +	//if (priv->phydev->phy_id == 0x937c4030 /* JL2XX1_PHY_ID */ ||
 +	//	priv->phydev->phy_id == 0x937c4032 /* JL2101_PHY_ID */)
-+		msleep(1500);
++		mdelay(2000);
 +
  	ret = stmmac_reset(priv, priv->ioaddr);
  	if (ret) {
@@ -21,7 +21,7 @@ index 46633a665f7e..5d46f94e956f 100644
  		goto init_error;
  	}
  
-+	msleep(1500);
++	mdelay(2000);
 +
  	/* DMA initialization and SW reset */
  	ret = dwmac_rk_init_dma_engine(priv, lb_priv);
