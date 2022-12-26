@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
 
-cd /vagrant
-source poky/oe-init-build-env /build
-bitbake core-image-minimal
+source /vagrant/poky/oe-init-build-env /build
+bitbake core-image-full-cmdline
