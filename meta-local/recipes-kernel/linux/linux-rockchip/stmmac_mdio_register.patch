@@ -1,0 +1,16 @@
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+index 093a223fe408..e160aaa43be1 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.c
+@@ -365,6 +365,11 @@ int stmmac_mdio_register(struct net_device *ndev)
+ 		goto bus_register_fail;
+ 	}
+ 
++	stmmac_mdio_write(new_bus, 0, 31, 2627);
++	stmmac_mdio_write(new_bus, 0, 25, 0x1801);
++	stmmac_mdio_write(new_bus, 0, 31, 0);
++	stmmac_mdio_write(new_bus, 0, 0,  0x8000);
++
+ 	if (priv->plat->phy_node || mdio_node)
+ 		goto bus_register_done;
+ 

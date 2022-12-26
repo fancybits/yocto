@@ -1,0 +1,22 @@
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+index 541788f9e2c8..6a49ad76328a 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk-tool.c
+@@ -1306,7 +1306,7 @@ static int dwmac_rk_get_max_delayline(struct stmmac_priv *priv)
+ static int dwmac_rk_phy_poll_reset(struct stmmac_priv *priv, int addr)
+ {
+ 	/* Poll until the reset bit clears (50ms per retry == 0.6 sec) */
+-	unsigned int val, retries = 12;
++	unsigned int val, retries = 12 * 3;
+ 	int ret;
+ 
+ 	val = mdiobus_read(priv->mii, addr, MII_BMCR);
+@@ -1366,7 +1366,7 @@ static int dwmac_rk_loopback_run(struct stmmac_priv *priv,
+ 			reset_control_deassert(priv->plat->stmmac_rst);
+ 	}
+ 	/* wait for phy and controller ready */
+-	usleep_range(100000, 200000);
++	usleep_range(1500000, 2000000);
+ 
+ 	dwmac_rk_set_loopback(priv, lb_priv->type, lb_priv->speed,
+ 			      true, phy_addr, true);
